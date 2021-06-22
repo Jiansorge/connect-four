@@ -2,21 +2,18 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
+  let newBoard = []
+  for (let x=0; x<4; x++){
+    let newColumn = []
+    for (let y=0; y<4; y++){
+      newColumn.push(0)
+    }
+    newBoard.push(newColumn)
+  }
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        Header
       </header>
     </div>
   );
