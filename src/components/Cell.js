@@ -2,7 +2,6 @@ import React from 'react';
 import '../App.css'
 
 const Cell = ({cellData, columnIndex, rowIndex, placeChecker}) => {
-  console.log(`Cell ${columnIndex},${rowIndex} Data:`, cellData)
   return (
     <li className={`cell ${cellData?.length>1 ? `${cellData} taken` : "gray"}`} 
     aria-labelledby={`Cell ${columnIndex}-${rowIndex}`}

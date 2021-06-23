@@ -40,6 +40,10 @@ main{
   color: rgb(50,50,50,0.0);
 }
 
+.message {
+  height:2rem;
+}
+
 ul.board{
   display: flex;
 }

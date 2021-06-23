@@ -7,22 +7,25 @@ const Game = () => {
   const [columnCount, setColumnCount] = useState(4);
   const [playerColor, setPlayerColor] = useState('red');
   const [moves, setMoves] = useState([]);
-  const [board, setBoard] = useState(
-    Array.from(Array(columnCount), () => {
+
+  const clearGrid = ()=>{
+    return Array.from(Array(columnCount), () => {
       return new Array(rowCount).fill(0)
-  })
-  );
+    })
+  }
+
+  const [board, setBoard] = useState(clearGrid());
   const [hasWon, setHasWon] = useState(false);
+  const [hasEnded, setHasEnded] = useState(false);
+  
 
   const placeChecker = (x,y)=> {
-    console.log(`set ${x},${y} to ${playerColor}`)
-    if(moves.length > rowCount*columnCount){
-      console.log("Error! Restarting game.")
-      restartGame()
-    }
     dropToken(x)
     setMoves([...moves, x])
     //checkWinner()
+    if(moves.length === rowCount*columnCount-1){
+      return endGame()
+    }
     changePlayer()
   }
 
@@ -57,17 +60,20 @@ const Game = () => {
   const checkWinner =()=>{
     if (isRowWin || isColumnWin || isDiagonalWin){
       setHasWon(true)
-      setTimeout(
-          restartGame(),
-      10000)
+      endGame()
     }
   }
 
+  const endGame=()=>{
+    setHasEnded(true)
+  }
+
   const restartGame=()=>{
-    setBoard(new Array(columnCount).fill(new Array(rowCount).fill("")))
+    setBoard(clearGrid())
     setHasWon(false)
     setMoves(moves=>[])
     setPlayerColor('red')
+    setHasEnded(false)
   }
 
   const changePlayer = ()=>{
@@ -78,19 +84,33 @@ const Game = () => {
     }
   }
 
+  const Message = () =>{
+    return (<h2 className="message">
+      {
+        hasEnded
+        && (
+          hasWon 
+          ? `Player ${toUpper(playerColor)} Won!`
+          : "Draw! New game?"
+        )}
+    </h2>)
+  }
+
+  const toUpper=(string)=>{
+    return playerColor[0].toUpperCase()+playerColor.slice(1,)
+  }
+
   return (
-    <div className="game">
+    <div className="game"  onClick={()=> hasEnded ? restartGame() : ''}
+    >
+      <Message/>
       { 
         board 
         && <Board board={board} placeChecker={placeChecker}/>
       }
-      {
-        hasWon
-        && <p>Player {playerColor} Wins!</p>
-      }
       <h4 style={{"color":`${playerColor}`}}
       >
-        Player {playerColor[0].toUpperCase()+playerColor.slice(1,)}'s Turn
+        Player {toUpper(playerColor)}'s Turn
       </h4>
       <p>Moves: [{moves}]</p>
     </div>
