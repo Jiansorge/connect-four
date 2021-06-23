@@ -1,5 +1,6 @@
 import React from 'react';
 import Cell from './Cell';
+import '../App.css'
 
 const Column = ({columnData, columnIndex}) => {
   const appendCellsToColumn=()=> {
@@ -15,7 +16,7 @@ const Column = ({columnData, columnIndex}) => {
   }
 
   return (
-    <ul>
+    <ul className="column">
       {
         appendCellsToColumn()
       }

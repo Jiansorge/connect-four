@@ -1,8 +1,9 @@
 import React from 'react';
+import '../App.css'
 
 const Cell = ({cellData, columnIndex, rowIndex}) => {
   return (
-    <li>
+    <li className="cell" aria-labelledby={`Cell ${columnIndex}-${rowIndex}`}>
       |_|
     </li>
   );

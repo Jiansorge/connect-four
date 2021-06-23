@@ -1,6 +1,6 @@
 import React from 'react';
-import Cell from './Cell';
 import Column from './Column';
+import '../App.css'
 
 const Board = ({ board }) => {
   const createMatrix=()=>{
@@ -16,7 +16,7 @@ const Board = ({ board }) => {
     }
 
   return (
-    <ul>
+    <ul className="board">
       {
         createMatrix()
       }
