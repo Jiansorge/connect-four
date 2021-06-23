@@ -22,7 +22,9 @@ const Game = () => {
   const placeChecker = (x,y)=> {
     dropToken(x)
     setMoves([...moves, x])
-    //checkWinner()
+    // if (checkWinner()){
+    //   return
+    // }
     if(moves.length === rowCount*columnCount-1){
       return endGame()
     }
@@ -46,22 +48,24 @@ const Game = () => {
   }
 
   const isRowWin=(row)=>{
-
+    return false
   }
 
   const isColumnWin=(column)=>{
-
+    return false
   }
 
   const isDiagonalWin=(x,y, board, color)=>{
-
+    return false
   }
 
   const checkWinner =()=>{
     if (isRowWin || isColumnWin || isDiagonalWin){
       setHasWon(true)
       endGame()
+      return true
     }
+    return false
   }
 
   const endGame=()=>{
@@ -106,7 +110,8 @@ const Game = () => {
       <Message/>
       { 
         board 
-        && <Board board={board} placeChecker={placeChecker}/>
+        && <Board board={board} placeChecker={placeChecker}
+          hasEnded={hasEnded}/>
       }
       <h4 style={{"color":`${playerColor}`}}
       >

@@ -2,7 +2,7 @@ import React from 'react';
 import Column from './Column';
 import '../App.css'
 
-const Board = ({ board, placeChecker }) => {
+const Board = ({ board, placeChecker, hasEnded }) => {
   const renderMatrix=()=>{
       const matrix = []
       board.forEach((x,index)=>{
@@ -10,6 +10,7 @@ const Board = ({ board, placeChecker }) => {
           columnIndex={index}
           key={index}
           placeChecker={placeChecker}
+          hasEnded={hasEnded}
         />
         )
       })

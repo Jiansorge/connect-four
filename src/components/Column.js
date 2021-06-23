@@ -2,7 +2,7 @@ import React from 'react';
 import Cell from './Cell';
 import '../App.css'
 
-const Column = ({columnData, columnIndex, placeChecker}) => {
+const Column = ({columnData, columnIndex, placeChecker, hasEnded}) => {
   const renderCellsToColumn=()=> {
     const column = []
     columnData.forEach((y,index)=>
@@ -11,6 +11,7 @@ const Column = ({columnData, columnIndex, placeChecker}) => {
         rowIndex={index}
         key={`${columnIndex}-${index}`}
         placeChecker={placeChecker}
+        hasEnded={hasEnded}
       />)
     )
     return column
