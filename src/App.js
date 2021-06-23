@@ -1,20 +1,19 @@
-import logo from './logo.svg';
 import './App.css';
+import Game from './components/Game';
 
 function App() {
-  let newBoard = []
-  for (let x=0; x<4; x++){
-    let newColumn = []
-    for (let y=0; y<4; y++){
-      newColumn.push(0)
-    }
-    newBoard.push(newColumn)
-  }
+
   return (
     <div className="App">
       <header className="App-header">
-        Header
+        <h1>Connect Four</h1>
       </header>
+      <main>
+        <Game/>
+      </main>
+      <footer>
+        <p>Created by <a href="https://linkedin.com/in/jiansorge">Jian Sorge</a></p>
+      </footer>
     </div>
   );
 }
