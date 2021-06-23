@@ -2,13 +2,14 @@ import React from 'react';
 import Column from './Column';
 import '../App.css'
 
-const Board = ({ board }) => {
-  const createMatrix=()=>{
+const Board = ({ board, placeChecker }) => {
+  const renderMatrix=()=>{
       const matrix = []
       board.forEach((x,index)=>{
         matrix.push(<Column columnData={board[index]} 
           columnIndex={index}
           key={index}
+          placeChecker={placeChecker}
         />
         )
       })
@@ -18,7 +19,7 @@ const Board = ({ board }) => {
   return (
     <ul className="board">
       {
-        createMatrix()
+        renderMatrix()
       }
     </ul>
   );
