@@ -13,7 +13,7 @@ const Cell = ({cellData, columnIndex, rowIndex, placeChecker, hasEnded}) => {
       }
     }}
     >
-      |({columnIndex},{rowIndex})|
+      
     </li>
   );
 }

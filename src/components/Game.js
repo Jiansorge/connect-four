@@ -2,10 +2,17 @@ import React, {useState} from 'react';
 import Board from './Board';
 import '../App.css'
 
+// TODO 
+//1) checkWinner()
+//2) pick me or robot goes first
+//3) use 9dt api to return column 
+// submit and setup interview
+
 const Game = () => {
-  const [rowCount, setRowCount] = useState(4);
-  const [columnCount, setColumnCount] = useState(4);
+  const rowCount = 4;
+  const columnCount = 4;
   const [playerColor, setPlayerColor] = useState('red');
+  const [doesPlayerGoFirst, setDoesPlayerGoFirst] = useState(undefined);
   const [moves, setMoves] = useState([]);
 
   const clearGrid = ()=>{
@@ -47,26 +54,26 @@ const Game = () => {
     }
   }
 
-  const isRowWin=(row)=>{
-    return false
-  }
+  // const isRowWin=(row)=>{
+  //   return false
+  // }
 
-  const isColumnWin=(column)=>{
-    return false
-  }
+  // const isColumnWin=(column)=>{
+  //   return false
+  // }
 
-  const isDiagonalWin=(x,y, board, color)=>{
-    return false
-  }
+  // const isDiagonalWin=(x,y, board, color)=>{
+  //   return false
+  // }
 
-  const checkWinner =()=>{
-    if (isRowWin || isColumnWin || isDiagonalWin){
-      setHasWon(true)
-      endGame()
-      return true
-    }
-    return false
-  }
+  // const checkWinner =()=>{
+  //   if (isRowWin || isColumnWin || isDiagonalWin){
+  //     setHasWon(true)
+  //     endGame()
+  //     return true
+  //   }
+  //   return false
+  // }
 
   const endGame=()=>{
     setHasEnded(true)
@@ -78,6 +85,7 @@ const Game = () => {
     setMoves(moves=>[])
     setPlayerColor('red')
     setHasEnded(false)
+    setDoesPlayerGoFirst(undefined)
   }
 
   const changePlayer = ()=>{
@@ -88,16 +96,34 @@ const Game = () => {
     }
   }
 
-  const Message = () =>{
-    return (<h2 className="message">
-      {
-        hasEnded
-        && (
-          hasWon 
-          ? `Player ${toUpper(playerColor)} Won!`
-          : "Draw! New game?"
-        )}
-    </h2>)
+  // const SelectWhoGoesFirst =()=>{
+  //   return (
+  //     <>
+  //       <h3>Select turn order:</h3>
+  //       <ul>
+  //         <li><input type="radio" onClick={()=>setDoesPlayerGoFirst(true)}></input> Player goes First</li>
+  //         <li><input type="radio" onClick={()=>setDoesPlayerGoFirst(false)}></input> AI goes First</li>
+  //       </ul> 
+  //     </>
+  //   )
+  // }
+
+  const Notification = () =>{
+    return (
+      <div className="message">
+        {  
+          // doesPlayerGoFirst === undefined
+          // ? <SelectWhoGoesFirst />
+          // :
+          hasEnded
+          && ( 
+            hasWon 
+            ? <h2>Player {toUpper(playerColor)} Won! Play again?</h2>
+            : <h2>Draw! New game?</h2>
+          )
+        }
+      </div>
+    )
   }
 
   const toUpper=(string)=>{
@@ -105,9 +131,10 @@ const Game = () => {
   }
 
   return (
-    <div className="game"  onClick={()=> hasEnded ? restartGame() : ''}
+    <div className="game"  
+    onClick={()=> hasEnded? restartGame() : ''}
     >
-      <Message/>
+      <Notification/>
       { 
         board 
         && <Board board={board} placeChecker={placeChecker}
