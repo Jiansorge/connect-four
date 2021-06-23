@@ -27,20 +27,21 @@ main{
 }
 
 .red{
+  background-color:red;
   color:red;
 }
 
 .black {
+  background-color:black;
   color:black;
 }
 
 .gray{
-  color: gray;
+  color: rgb(50,50,50,0.0);
 }
 
 ul.board{
   display: flex;
-
 }
 
 ul.column{
@@ -54,6 +55,12 @@ li.cell{
   font-size: 2rem;
   cursor: pointer;
   border: 1px solid black;
+  border-radius: 30px;
+  user-select: none;
+}
+
+li.taken {
+  cursor:not-allowed;
 }
 
 footer p {

@@ -8,7 +8,9 @@ const Game = () => {
   const [playerColor, setPlayerColor] = useState('red');
   const [moves, setMoves] = useState([]);
   const [board, setBoard] = useState(
-    new Array(columnCount).fill(new Array(rowCount).fill(undefined)),
+    Array.from(Array(columnCount), () => {
+      return new Array(rowCount).fill(0)
+  })
   );
   const [hasWon, setHasWon] = useState(false);
 
@@ -18,15 +20,26 @@ const Game = () => {
       console.log("Error! Restarting game.")
       restartGame()
     }
-    console.log("board[x+1]",board[x+1])
-    const tempBoard = board.slice()
-    tempBoard[x][y] = playerColor
-    console.log("temp board", tempBoard)
-    setBoard(tempBoard)
-    console.log("board after click",board)
+    dropToken(x)
     setMoves([...moves, x])
     //checkWinner()
     changePlayer()
+  }
+
+  const dropToken=(column)=>{
+    if (!!board[column][0]){
+      return false
+    } else {
+      let y=rowCount-1
+      while (y >= 0){
+        if (board[column][y] === 0){
+          const tempBoard = board.slice()
+          tempBoard[column][y] = playerColor
+          return setBoard(tempBoard)
+        }
+        y--
+      }
+    }
   }
 
   const isRowWin=(row)=>{
@@ -65,10 +78,6 @@ const Game = () => {
     }
   }
 
-  React.useEffect(() => {
-    console.log("board",board)
-  }, [board]);
-
   return (
     <div className="game">
       { 
@@ -79,7 +88,7 @@ const Game = () => {
         hasWon
         && <p>Player {playerColor} Wins!</p>
       }
-      <h4 className={`${playerColor}`}
+      <h4 style={{"color":`${playerColor}`}}
       >
         Player {playerColor[0].toUpperCase()+playerColor.slice(1,)}'s Turn
       </h4>

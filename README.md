@@ -9,4 +9,4 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - (0,0) is top left cell
 - x-coordinate is for rows
 - y-coordinate is for columns
-- 4x4 matrix will be a flexible array of arrays with '', 'red' or 'black' for each element
+- 4x4 matrix will be a flexible array of arrays with 0, 'red' or 'black' for each element
