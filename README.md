@@ -1,5 +1,5 @@
 # Connect Four Technical Challenge 
-##Submission by Jian Sorge
+## Submission by Jian Sorge
 
 ## Instructions to Run
 
@@ -12,7 +12,7 @@
 This project is submitted as an intentional work in progress within a 6 hour time limit.
 
 ### Coordinate System
-`
+
 - (0,0) is top left cell
 - x-coordinate is for rows
 - y-coordinate is for columns
