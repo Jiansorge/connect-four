@@ -1,5 +1,5 @@
-# Connect Four Technical Challenge 
-## Submission by Jian Sorge
+# Connect Four  
+## WIP Submission by Jian Sorge
 
 ## Instructions to Run
 
