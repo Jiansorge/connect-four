@@ -1,4 +1,5 @@
-# Connect Four Technical Challenge Submission by Jian Sorge
+# Connect Four Technical Challenge 
+##Submission by Jian Sorge
 
 ## Instructions to Run
 
@@ -7,6 +8,8 @@
 1. Go to `localhost:3000`
 
 ## Design
+
+This project is submitted as an intentional work in progress within a 6 hour time limit.
 
 ### Coordinate System
 `
@@ -30,4 +33,4 @@ Features left to develop:
 - If I was to implement testing, I would utilize Jest and Enzyme to perform unit testing on the components.
 - I would attempt to use Gherkin for BDD implementation testing
 
-## This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+- This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
